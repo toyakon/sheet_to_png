@@ -20,7 +20,7 @@ pypdf2 = "*"
 wand = "*"
 
 [scripts]
-start = "python sheet_to_png.py"
+start = "python disc_bot.py"
 
 [requires]
 python_version = "3.7.5"

@@ -1,1 +1,1 @@
-bot: python main.py
+bot: python disc_bot.py

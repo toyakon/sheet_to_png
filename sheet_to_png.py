@@ -14,13 +14,19 @@ class SheetToPng:
     """ Convert sheet to png Class.
     """
 
-    def __init__(self, sheet_url: str):
-        self.sheet_url = sheet_url
-    
+    def __init__(self, sheet_url: str, gid: int=0):
+        p = sheet_url.split("/edit#")
+        self.sheet_url = p[0]
+        if len(p) > 1:
+            qs = urllib.parse.parse_qs(p[1])
+            self.gid = qs["gid"][0] if "gid" in qs else gid
+        else:
+            self.gid = gid
+
     def cell_to_pdf(self, start: int, end: int):
         params = {
                 "format": "pdf",
-                "gid": 0,
+                "gid": self.gid,
                 "range": f"{start}:{end}",
                 "size": 1,
                 "portrait": "false",
